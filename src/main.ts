@@ -1,4 +1,17 @@
+import { Ground } from "./classes/ground";
 import { Player } from "./classes/player";
+import {
+	GAME_DIFFICULTY_SPEED_START,
+	GAME_HEIGHT,
+	GAME_SPEED,
+	GAME_WIDTH,
+	GROUND_HEIGHT,
+	GROUND_WIDTH,
+	MAX_JUMP_HEIGHT,
+	MIN_JUMP_HEIGHT,
+	PLAYER_HEIGHT,
+	PLAYER_WIDTH,
+} from "./constants";
 import "./style.css";
 
 const canvas = document.querySelector<HTMLCanvasElement>("#game")!;
@@ -9,20 +22,15 @@ const ctx = canvas.getContext("2d")!;
 
 let scaleRatio: null | number = null;
 let prevTime: null | number = null;
-
-// constants
-const GAME_WIDTH = 800;
-const GAME_HEIGHT = 200;
-const PLAYER_WIDTH = 88 / 1.5;
-const PLAYER_HEIGHT = 94 / 1.5;
-const MAX_JUMP_HEIGHT = GAME_HEIGHT;
-const MIN_JUMP_HEIGHT = 150;
+let gameSpeed = GAME_DIFFICULTY_SPEED_START;
 
 // game objects
 let player: Player | null = null;
+let ground: Ground | null = null;
 
 function createSprites() {
 	if (!scaleRatio) return;
+	// player sprite
 	const playerWidthInGame = PLAYER_WIDTH * scaleRatio;
 	const playerHeightInGame = PLAYER_HEIGHT * scaleRatio;
 	const minJumpHeightInGame = MIN_JUMP_HEIGHT * scaleRatio;
@@ -34,6 +42,19 @@ function createSprites() {
 		playerHeightInGame,
 		minJumpHeightInGame,
 		maxJumpHeightInGame,
+		scaleRatio,
+	);
+
+	// ground sprite
+
+	const groundWidthInGame = GROUND_WIDTH * scaleRatio;
+	const groundHeightInGame = GROUND_HEIGHT * scaleRatio;
+
+	ground = new Ground(
+		ctx,
+		groundWidthInGame,
+		groundHeightInGame,
+		GAME_SPEED,
 		scaleRatio,
 	);
 }
@@ -86,9 +107,13 @@ function gameLoop(frameTime: number) {
 	prevTime = frameTime;
 	clearScreen();
 	// Update game objects
+	ground?.update(gameSpeed, frameTimeDelta);
+	player?.update(gameSpeed, frameTimeDelta);
 
 	// Draw game objects
 	player?.draw();
+	ground?.draw();
+
 	requestAnimationFrame(gameLoop);
 }
 
