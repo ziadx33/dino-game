@@ -2,12 +2,13 @@ export class Player {
 	WALK_ANIMATION_TIMER = 200;
 	walkAnimationTimer: number = this.WALK_ANIMATION_TIMER;
 	dinoRunImages: HTMLImageElement[] = [];
-
 	jumpPressed = false;
 	jumpInProgress = false;
 	falling = false;
 	JUMP_SPEED = 0.45;
-	GRAVITY = 0.3;
+	GRAVITY = 0.4;
+	jumpVelocity = 0;
+	jumpStarted = false;
 
 	// Player properties
 	public ctx: CanvasRenderingContext2D;

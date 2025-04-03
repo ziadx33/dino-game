@@ -54,4 +54,8 @@ export class Ground {
 	update(gameSpeed: number, frameTimeDelta: number) {
 		this.posX -= gameSpeed * frameTimeDelta * this.speed * this.scaleRatio;
 	}
+
+	reset() {
+		this.posX = 0;
+	}
 }

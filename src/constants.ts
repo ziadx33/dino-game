@@ -9,6 +9,23 @@ const GROUND_HEIGHT = 24;
 const GAME_SPEED = 0.5;
 const GAME_DIFFICULTY_SPEED_START = 0.75;
 const GAME_DIFFICULTY_SPEED_INCREMENT = 0.00001;
+const CACTI_CONFIG = [
+	{
+		width: 48 / 1.4,
+		height: 100 / 1.5,
+		image: "/public/static/media/imgs/cactus_1.png",
+	},
+	{
+		width: 98 / 1.4,
+		height: 100 / 1.5,
+		image: "/public/static/media/imgs/cactus_2.png",
+	},
+	{
+		width: 68 / 1.4,
+		height: 70 / 1.5,
+		image: "/public/static/media/imgs/cactus_3.png",
+	},
+];
 
 export {
 	GAME_WIDTH,
@@ -22,4 +39,5 @@ export {
 	GAME_SPEED,
 	GAME_DIFFICULTY_SPEED_START,
 	GAME_DIFFICULTY_SPEED_INCREMENT,
+	CACTI_CONFIG,
 };
