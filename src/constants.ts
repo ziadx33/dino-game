@@ -13,17 +13,17 @@ const CACTI_CONFIG = [
 	{
 		width: 48 / 1.4,
 		height: 100 / 1.5,
-		image: "/public/static/media/imgs/cactus_1.png",
+		image: "/static/media/imgs/cactus_1.png",
 	},
 	{
 		width: 98 / 1.4,
 		height: 100 / 1.5,
-		image: "/public/static/media/imgs/cactus_2.png",
+		image: "/static/media/imgs/cactus_2.png",
 	},
 	{
 		width: 68 / 1.4,
 		height: 70 / 1.5,
-		image: "/public/static/media/imgs/cactus_3.png",
+		image: "/static/media/imgs/cactus_3.png",
 	},
 ];
 
