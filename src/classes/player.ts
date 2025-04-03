@@ -120,13 +120,23 @@ export class Player {
 				(this.posY > this.canvas.height - this.maxJumpHeight &&
 					this.jumpPressed)
 			) {
-				this.posY -= this.JUMP_SPEED * frameTimeDelta * this.scaleRatio;
+				console.log(
+					"es7a",
+					this.JUMP_SPEED - (100 - (this.posY / this.initY) * 100),
+				);
+				this.posY -=
+					(this.JUMP_SPEED - (100 - (this.posY / this.initY) * 100) / 800) *
+					frameTimeDelta *
+					this.scaleRatio;
 			} else {
 				this.falling = true;
 			}
 		} else {
 			if (this.posY < this.initY) {
-				this.posY += this.GRAVITY * frameTimeDelta * this.scaleRatio;
+				this.posY +=
+					(this.GRAVITY + ((this.posY / this.initY) * 100) / 800) *
+					frameTimeDelta *
+					this.scaleRatio;
 				if (this.posY + this.height > this.canvas.height) {
 					this.posY = this.initY;
 				}
